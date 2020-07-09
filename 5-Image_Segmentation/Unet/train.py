@@ -23,18 +23,18 @@ def DataGenerator(file_path, batch_size):
     use the same seed for image_datagen and mask_datagen
     to ensure the transformation for image and mask is the same
     """
-    aug_dict = dict(rotation_range=0.2,
+    aug_dict1 = dict(rotation_range=0.2,
                         width_shift_range=0.05,
                         height_shift_range=0.05,
                         shear_range=0.05,
                         zoom_range=0.05,
                         horizontal_flip=True,
                         fill_mode='nearest')
-    aug_dict = dict(horizontal_flip=True,
+    aug_dict2 = dict(horizontal_flip=True,
                         fill_mode='nearest')
 
-    image_datagen = ImageDataGenerator(**aug_dict)
-    mask_datagen = ImageDataGenerator(**aug_dict)
+    image_datagen = ImageDataGenerator(**aug_dict1)
+    mask_datagen = ImageDataGenerator(**aug_dict2)
     image_generator = image_datagen.flow_from_directory(
         file_path,
         classes=["images"],
